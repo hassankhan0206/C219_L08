@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style>
+
+#main{
+    text-align: center;
+}
+
+body{
+    background-color: bisque;
+}
+
+.outline{
+    width: 10px;
+    background-color: chartreuse;
+    aspect-ratio: 1;
+    margin-left: 450px;
+}
+</style>
+
+</head>
+
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    
+
+    <div id="main">
+
+    
+<h1>About Me</h1>
+<img src="img2/Passport.jpg" alt="Photo" width="200">
+
+<div class="outline"></div>
+<p class="para">Hey, my name Hassan and I love food. Click on the following to learn about my favourite food</p>
+<p class="para">My age is <span id="age" style="font-weight: bolder;"></span></p>
+
+<p class="para"><a href="individual2.html">Hassan's favourite food!</a></p>
+<p class="para">View <a href="Exercise2.html">Exercise 2</a></p>
+<p class="para">View <a href="L08 Assignment.html">L08 Assignment</a></p>
+<div class="outline"></div>
+</div>
+
+<script>
+    anime({
+targets: '.outline',
+translateX: 600,
+direction: 'alternate',
+loop: true,
+easing: 'easeInOutSine'
+});
+
+
+
+anime({
+  targets: '.para',
+  translateX: 1,
+  opacity: [0,1],
+  delay: anime.stagger(200, {start: 500}) // delay starts at 500ms then increase by 100ms for each elements.
+});
+
+anime({
+  targets: '#age',
+  innerHTML: [0, 18],
+  easing: 'linear',
+  round: 10 
+});
+
+
+
+</script>
+</body>
+</html>

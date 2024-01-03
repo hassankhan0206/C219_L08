@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        #main {
+            text-align: center;
+        }
+
+        body {
+            background-color: bisque;
+        }
+
+        .outline {
+            width: 10px;
+            background-color: chartreuse;
+            aspect-ratio: 1;
+            margin-left: 450px;
+        }
+
+
+        .contact{
+            text-align: center;
+        }
+        #me{
+            
+            font-size: 50px;
+        }
+
+        .contact img {
+            width:70px;
+            padding: 20px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/fullpage.js/dist/fullpage.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <div id="fullpage">
+        <div class="section">
+
+        <div id="main">
+
+
+            <h1>About Me</h1>
+            <img src="img2/Passport.jpg" alt="Photo" width="200">
+
+            <div class="outline"></div>
+            <p class="para">Hey, my name Hassan and I love food. Click on the following to learn about my favourite food
+            </p>
+            <p class="para">My age is <span id="age" style="font-weight: bolder;"></span></p>
+
+            <p class="para"><a href="#">Hassan's favourite food!</a></p>
+            <div class="outline"></div>
+        </div>
+    </div>
+
+        <div class="section">
+            <div class="contact">
+                <p id="me">Contact Me</p>
+                <img src="img2/facebook.png">
+                <img src="img2/instagram.png">
+                <img src="img2/twitter.png">
+                <p>Feel free to contact me directly at my email - hassankhan@gmail.com</p><br>
+                <p>View <a href="Exercise1.html">Exercise 1</a></p>
+                <p>View <a href="Exercise1.html">L08 Assignment</a></p>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/fullpage.js/dist/fullpage.min.js"></script>
+
+    <script>
+        anime({
+            targets: '.outline',
+            translateX: 600,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutSine'
+        });
+
+
+
+        anime({
+            targets: '.para',
+            translateX: 1,
+            opacity: [0, 1],
+            delay: anime.stagger(200, { start: 500 }) // delay starts at 500ms then increase by 100ms for each elements.
+        });
+
+        anime({
+            targets: '#age',
+            innerHTML: [0, 18],
+            easing: 'linear',
+            round: 10
+        });
+
+            // Define animations for elements in the second section
+    var contactAnimations = anime.timeline({
+        targets: '.contact',
+        autoplay: false // Set autoplay to false to control when the animations start
+    });
+
+    // Staggered animations for child elements of '.contact'
+    contactAnimations.add({
+        targets: '#me',
+        translateY: [-50, 0],
+        opacity: [0, 1],
+        easing: 'easeInOutQuad',
+        duration: 800
+    })
+    .add({
+        targets: '.contact img',
+        translateY: [50, 0],
+        opacity: [0, 1],
+        delay: anime.stagger(100),
+        easing: 'easeInOutQuad',
+        duration: 400
+    })
+    .add({
+        targets: '.contact p',
+        translateY: [50, 0],
+        opacity: [0, 1],
+        easing: 'easeInOutQuad',
+        duration: 400
+    });
+
+        $(document).ready(function () {
+            $('#fullpage').fullpage({ //initialize
+                //set options
+                sectionsColor: ['#03A9F4', '#2ECC71', '#00BCD4'],
+                navigation: true,
+                navigationPosition: 'right',
+
+
+                anchors: ['section1', 'section2'], //name the anchors for each section
+
+                afterLoad: function (origin, destination, direction) {
+
+                    if (destination.index == 1) { // Section 2
+                    contactAnimations.play(); // Start the staggered animations
+                }
+                }
+            });
+        });
+
+
+
+    </script>
+</body>
+
+</html>
